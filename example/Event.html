@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script type="text/javascript" src="../js/Event.js"></script>
+    <!-- 异步加载，单独执行
+    <script type="text/javascript">
+        (function () {
+            var _event_script = "../js/Event.js";
+            var _scripts = document.getElementsByTagName('script');
+            for (var i = 0; i < _scripts.length; i++) {
+                if (_scripts[i].src == _event_script) {
+                    return;
+                }
+            }
+            var _script = document.createElement('script');
+            _script.type = 'text/javascript';
+            _script.async = true;
+            _script.src = _event_script;
+            var _s = _scripts[0];
+            _s.parentNode.insertBefore(_script, _s);
+        })();
+    </script>
+     -->
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <ul id="ul">
+            <li id="li1" name="li1-name" ssa-data-id="li1-ssa"><a href="http://baidu.com/">111</a></li>
+            <li id="li2"><a href="http://baidu.com/">222</a></li>
+            <li id="li3"><a href="#">333</a></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var elem = document.getElementById("div1");
+    var callback = function (e) {
+        console.log(new Date().getTime());
+        var a = e.delegateTarget;
+        a.href = a.href + "?name=test";
+        console.log(e);
+        console.log(e.currentTarget);
+    };
+    Event.delegate(elem, "a", "click", {d1: "data1", d2: "data2"}, callback);
+    Event.delegate(elem, "a", "mouseover", callback);
+</script>
+
+</body>
+</html>
