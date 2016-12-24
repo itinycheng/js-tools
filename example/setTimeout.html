@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout函数伪多线程测试</title>
+    <script type="text/javascript">
+        setTimeout(function () { while (true) { } }, 1000);
+        setTimeout(function () { alert('2000'); }, 2000);
+        setTimeout(function () { alert('100'); }, 100);
+        alert('end');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
